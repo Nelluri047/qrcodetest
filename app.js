@@ -33,6 +33,11 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: 'yourSecretKey', // Replace 'yourSecretKey' with an actual secure key
+  resave: false,
+  saveUninitialized: true,
+}));
 app.use(
   expressSession({
     store: new PrismaSessionStore(prisma, {
